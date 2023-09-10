@@ -1,13 +1,14 @@
 from main import *
 from script import validateCpf
 
-app = Gui()
-rows = 'Coloque os dados de forma valida.'
+import backend as core
+
+interface = Gui()
+rows = 'Insira dados válidos.'
 
 class VerifyData:
-    def __init__(self,
-                 name = app.txtNome.get(), second_name = app.txtSobrenome.get(),
-                 email = app.txtEmail.get(), cpf = app.txtCpf.get()):
+    def __init__(self, name = interface.txtNome.get(), second_name = interface.txtSobrenome.get(),
+                       email = interface.txtEmail.get(), cpf = interface.txtCpf.get()):
        self.name = name
        self.second_name = second_name
        self.email = email
@@ -19,39 +20,52 @@ class VerifyData:
             Cpf(cpf)):
 
             return True
-
         else:
             return False
 
     def response(self):
-        app.listClientes.insert(END, rows)
+        interface.listClientes.insert(END, rows)
+
+def verifyUserExist(email, cpf):
+
+    allClients = core.view()
+
+    for cl in allClients:
+        print(cl[3])
+        print(cl[4])
+        if email in cl[3] or cpf in cl[4]:
+
+            return False
+
+    return True
+
 
 def NameAndSecond(name, second_name):
-    if str(name).replace('-', '').isdigit() or str(second_name).replace('-', '').isdigit():
-        rows = f'Não é permitido nomes que possuem numeros'
-        app.listClientes.insert(END, rows)
+    if (str(name).replace('-', '').isdigit() or
+        str(second_name).replace('-', '').isdigit() or
+        str(name) == '' or str(second_name) == ''):
+
+        rows = f'Escreva um nome valido'
+        interface.listClientes.insert(END, rows)
         return False
 
     return True
 
 def Email(email):
-    words_ok: list[str] = ['@gmail', "@"]
+    words_ok: list[str] = ['@gmail', '@']
 
     for words in words_ok:
         if words.lower() not in email.lower():
-            rows = 'email nao aceito'
-            app.listClientes.insert(END, rows)
-            #print(f'O email {str(email)} nao é válido')
+            rows = 'Email nao aceito'
+            interface.listClientes.insert(END, rows)
             return False
 
     return True
 
 def Cpf(cpf):
-    print(validateCpf.validate(cpf))
     if not validateCpf.validate(cpf):
         rows = 'CPF invalido'
-        app.listClientes.insert(END, rows)
+        interface.listClientes.insert(END, rows)
         return False
 
     return True
-

@@ -7,6 +7,9 @@ dist/
 ap.spec
 app.spec
 
+#ambiente de desenvolvimento
+dev_venv/
+
 # Padrao
 /shelf/
 /workspace.xml

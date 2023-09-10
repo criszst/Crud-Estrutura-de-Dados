@@ -25,7 +25,6 @@ def insert_command():
     app.listClientes.delete(0, END)
 
     if not vrfy.validate(app.txtNome.get(), app.txtSobrenome.get(), app.txtEmail.get(), app.txtCpf.get()):
-        print(app.txtCpf.get())
         verify.VerifyData.response(verify.VerifyData)
 
     else:

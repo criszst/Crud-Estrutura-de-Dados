@@ -16,7 +16,7 @@ class Gui:
     lblNome = Label(window, text="Nome")
     lblSobrenome = Label(window, text="Sobrenome")
     lblEmail = Label(window, text="Email")
-    lblCpf = Label(window, text="Cpf")
+    lblCpf = Label(window, text="CPF")
 
     entNome = Entry(window, textvariable=txtNome, width=width_entry)
     entSobrenome = Entry(window, textvariable=txtSobrenome, width=width_entry)
@@ -26,7 +26,7 @@ class Gui:
     listClientes = Listbox(window, width=100)
     scrollClientes = Scrollbar(window)
 
-    btnViewAll = Button(window, text = 'Ver todos')
+    btnViewAll = Button(window, text = 'Ver Todos')
     btnBuscar = Button(window, text = 'Buscar')
     btnInserir = Button(window, text = 'Inserir')
     btnUpdate = Button(window, text = 'Atualizar Selecionados')

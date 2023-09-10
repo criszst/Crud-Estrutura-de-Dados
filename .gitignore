@@ -7,11 +7,13 @@ dist/
 ap.spec
 app.spec
 
-# Default ignored files
+# Padrao
 /shelf/
 /workspace.xml
-# Editor-based HTTP Client requests
+
+# Client Request
 /httpRequests/
-# Datasource local storage ignored files
+
+# DataSources
 /dataSources/
 /dataSources.local.xml

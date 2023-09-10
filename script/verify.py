@@ -39,9 +39,8 @@ def Email(email):
 
     for words in words_ok:
         if words.lower() not in email.lower():
-            rows = 'email nao aceito'
+            rows = 'Email nao aceito'
             app.listClientes.insert(END, rows)
-            #print(f'O email {str(email)} nao é válido')
             return False
 
     return True

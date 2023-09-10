@@ -2,10 +2,12 @@
 .idea/
 build/
 dist/
+script/__pycache__
 
 #arquivos
 ap.spec
 app.spec
+clientes.db
 
 #ambiente de desenvolvimento
 dev_venv/

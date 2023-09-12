@@ -6,6 +6,9 @@
 
 #spec
 *.spec
+*.iml
+*.toc
+*.pyz
 
 #arquivos
 /clientes.db

@@ -1,6 +1,5 @@
-# Crud-Estrutura-de-Dados
-Um pequeno Crud feito com python e possuindo estrutura de dados + sqlite
+A small Crud made with python and having data structure + sqlite
 
-o design é tao simples q ate uma criança de 5 anos faz uma tela melhor, eh foda
+The design is so simple that even a 5 year old child can make a better screen, it's awesome
 
-pretendo melhorar o design e o codigo (tornando-o mais clean code) ao longo do tempo
+I intend to improve the design and code (making it more clean code) over time

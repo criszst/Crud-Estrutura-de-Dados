@@ -1,20 +1,21 @@
 #pastas
-/.idea/
-/build/
-/dist/
-/__pycache_/_
+/.idea
+/build
+/dist
+/__pycache__
+
+#spec
+*.spec
 
 #arquivos
-ap.spec
-app.spec
-clientes.db
+/clientes.db
 
 #ambiente de desenvolvimento
-/dev_venv/
+/dev_venv
 
 # Padrao
 /shelf/
-/workspace.xml
+/workspace.xml/
 
 # Client Request
 /httpRequests/

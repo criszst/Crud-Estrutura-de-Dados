@@ -1,75 +1,93 @@
 from tkinter import *
+import customtkinter as ct
 
 class Gui:
     x_pad = 5
-    y_pad = 3
-    width_entry = 30
+    y_pad = 5
+    width_entry = 200
+    btnWidth = 200
 
-    window = Tk()
-    window.wm_title('PYSQL versao 1.0')
+    window = ct.CTk()
+    window.wm_title("CRUD SQL")
+    window.geometry("960x582")
+    window.grid_columnconfigure(2, weight=4)
 
-    txtNome = StringVar()
-    txtSobrenome = StringVar()
-    txtEmail = StringVar()
-    txtCpf = StringVar()
+    ct.set_appearance_mode("System")
 
-    lblNome = Label(window, text="Nome")
-    lblSobrenome = Label(window, text="Sobrenome")
-    lblEmail = Label(window, text="Email")
-    lblCpf = Label(window, text="CPF")
+    sidebar_frame = ct.CTkFrame(window, width=140, corner_radius=0)
+    sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nsew")
+    sidebar_frame.grid_rowconfigure(4, weight=1)
 
-    entNome = Entry(window, textvariable=txtNome, width=width_entry)
-    entSobrenome = Entry(window, textvariable=txtSobrenome, width=width_entry)
-    entEmail = Entry(window, textvariable=txtEmail, width=width_entry)
-    entCpf = Entry(window, textvariable=txtCpf, width=width_entry)
+    txtNome = ct.StringVar()
+    txtSobrenome = ct.StringVar()
+    txtEmail = ct.StringVar()
+    txtCpf = ct.StringVar()
 
-    listClientes = Listbox(window, width=100)
-    scrollClientes = Scrollbar(window)
+    entNome = ct.CTkEntry(sidebar_frame, width=width_entry, placeholder_text = 'Nome')
+    entSobrenome = ct.CTkEntry(sidebar_frame, width=width_entry, placeholder_text= 'Sobrenone')
+    entEmail = ct.CTkEntry(sidebar_frame, width=width_entry, placeholder_text = 'Email')
+    entCpf = ct.CTkEntry(sidebar_frame, width=width_entry, placeholder_text = 'CPF')
 
-    btnViewAll = Button(window, text = 'Ver Todos')
-    btnBuscar = Button(window, text = 'Buscar')
-    btnInserir = Button(window, text = 'Inserir')
-    btnUpdate = Button(window, text = 'Atualizar Selecionados')
-    btnDel = Button(window, text = 'Deletar Selecionados')
-    btnClose = Button(window, text = 'Fechar')
 
-    lblNome.grid(row = 0, column = 0)
-    lblSobrenome.grid(row = 1, column = 0)
-    lblEmail.grid(row = 2, column = 0)
-    lblCpf.grid(row = 3, column = 0)
+    listClientes = Listbox(window, width=120)
+    scrollClientes = ct.CTkScrollbar(window)
 
-    entNome.grid(row = 0, column = 1, padx = 50, pady = 50)
-    entSobrenome.grid(row = 1, column = 1)
-    entEmail.grid(row = 2, column = 1)
-    entCpf.grid(row = 3, column = 1)
+    btnViewAll = ct.CTkButton(
+        sidebar_frame, text="Ver Todos", corner_radius=20, width=btnWidth
+    )
 
-    listClientes.grid(row = 0, column = 2, rowspan = 10)
-    scrollClientes.grid(row = 0, column= 6, rowspan = 10)
+    btnBuscar = ct.CTkButton(
+        sidebar_frame, text="Buscar", width=btnWidth, corner_radius=20,
+    )
 
-    btnViewAll.grid(row =4, column = 0, columnspan = 2)
-    btnBuscar.grid(row = 5, column = 0, columnspan = 2)
-    btnInserir.grid(row = 6, column = 0, columnspan = 2)
-    btnUpdate.grid(row = 7, column = 0, columnspan = 2)
-    btnDel.grid(row = 8, column = 0, columnspan = 2)
-    btnClose.grid(row = 9, column = 0, columnspan = 2)
+    btnInserir = ct.CTkButton(
+        sidebar_frame, text="Inserir", width=btnWidth, corner_radius=20
+    )
 
-    listClientes.configure(yscrollcommand = scrollClientes.set)
-    scrollClientes.configure(command = listClientes.yview)
+    btnUpdate = ct.CTkButton(
+        sidebar_frame, text="Atualizar", width=btnWidth, corner_radius=20
+    )
+
+    btnDel = ct.CTkButton(
+        sidebar_frame, text="Deletar", width=btnWidth, corner_radius=20
+    )
+    btnClose = ct.CTkButton(
+        sidebar_frame, text="Fechar", width=btnWidth, corner_radius=20,
+    )
+
+    entNome.grid(row=0, column=0, padx=x_pad, pady=y_pad)
+    entSobrenome.grid(row=1, column=0, padx=x_pad, pady=y_pad)
+    entEmail.grid(row=2, column=0,padx=x_pad, pady=y_pad)
+    entCpf.grid(row=3, column=0, padx=x_pad, pady=y_pad)
+
+    listClientes.grid(row=0, column=2, rowspan=10)
+    scrollClientes.grid(row=0, column=6, rowspan=10)
+
+    btnViewAll.grid(row=4, column=0,  padx=x_pad, pady=y_pad)
+    btnBuscar.grid(row=5, column=0, padx=x_pad, pady=y_pad)
+    btnInserir.grid(row=6, column=0,  padx=x_pad, pady=y_pad)
+    btnUpdate.grid(row=7, column=0,  padx=x_pad, pady=y_pad)
+    btnDel.grid(row=8, column=0, padx=x_pad, pady=y_pad)
+    btnClose.grid(row=9, column=0, padx=x_pad, pady=y_pad)
+
+    listClientes.configure(yscrollcommand=scrollClientes.set)
+    scrollClientes.configure(command=listClientes.yview)
 
     for child in window.winfo_children():
         widget_class = child.__class__.__name__
 
-        if widget_class == 'Button':
-            child.grid_configure(sticky = 'WE', padx = x_pad, pady = y_pad)
+        if widget_class == "Button":
+            child.grid_configure(sticky="WE", padx=x_pad, pady=y_pad)
 
-        elif widget_class == 'ListBox':
-            child.grid_configure(sticky = 'NS', padx = 0, pady = 0)
+        elif widget_class == "ListBox":
+            child.grid_configure(sticky="NS", padx=0, pady=0)
 
-        elif widget_class == 'ScrollBar':
-            child.grid_configure(sticky = 'NS', padx = 0, pady = 0)
+        elif widget_class == "ScrollBar":
+            child.grid_configure(sticky="NS", padx=0, pady=0)
 
         else:
-            child.grid_configure(sticky='N', padx=x_pad, pady=y_pad)
+            child.grid_configure(sticky="N", padx=x_pad, pady=x_pad)
 
-    def run(self):
+    @staticmethod
+    def run():
         Gui.window.mainloop()

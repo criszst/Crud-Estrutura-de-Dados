@@ -5,6 +5,7 @@ import backend as core
 
 app = None
 
+
 def view_command():
     rows = core.view()
     app.listClientes.delete(0, END)
@@ -15,7 +16,9 @@ def view_command():
 def search_command():
     app.listClientes.delete(0, END)
 
-    rows = core.search(app.txtNome.get(), app.txtSobrenome.get(), app.txtEmail.get(),app.txtCpf.get())
+    rows = core.search(
+        app.entNome.get(), app.entSobrenome.get(), app.entEmail.get(), app.entCpf.get()
+    )
     for r in rows:
         app.listClientes.insert(END, r)
 
@@ -24,16 +27,27 @@ def insert_command():
     vrfy = verify.VerifyData()
     app.listClientes.delete(0, END)
 
-    if not vrfy.validate(app.txtNome.get(), app.txtSobrenome.get(), app.txtEmail.get(), app.txtCpf.get()):
-        verify.VerifyData.response(verify.VerifyData)
+    if not vrfy.validate(app.entNome.get(), app.entSobrenome.get(), app.entEmail.get(), app.entCpf.get(), ):
+        return False
 
     else:
-        core.insert(app.txtNome.get(), app.txtSobrenome.get(), app.txtEmail.get(), app.txtCpf.get())
+        core.insert(
+            app.entNome.get(),
+            app.entSobrenome.get(),
+            app.entEmail.get(),
+            app.entCpf.get(),
+        )
         view_command()
 
 
 def update_command():
-    core.update(selected[0], app.txtNome.get(),app.txtSobrenome.get(),app.txtEmail.get (), app.txtCpf.get())
+    core.update(
+        selected[0],
+        app.entNome.get(),
+        app.entSobrenome.get(),
+        app.entEmail.get(),
+        app.entCpf.get(),
+    )
     view_command()
 
 
@@ -54,7 +68,7 @@ def getSelectedRow(event):
     app.entSobrenome.delete(0, END)
     app.entSobrenome.insert(END, selected[2])
 
-    app.entEmail.delete (0, END)
+    app.entEmail.delete(0, END)
     app.entEmail.insert(END, selected[3])
 
     app.entCpf.delete(0, END)
@@ -64,7 +78,7 @@ def getSelectedRow(event):
 
 if __name__ == "__main__":
     app = Gui()
-    app.listClientes.bind('<<ListboxSelect>> ', getSelectedRow)
+    app.listClientes.bind("<<ListboxSelect>> ", getSelectedRow)
 
 
 app.btnViewAll.configure(command=view_command)

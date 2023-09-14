@@ -6,6 +6,7 @@ I implemented data verification and changed the interface
 
 <div style='flex'>
   New Interface
+  
   ![image](https://github.com/Cristi4nSt/Crud-Estrutura-de-Dados/assets/56496903/68feade6-447d-4ed8-b43a-a2e2d003d84e)
 
   Old Interface

@@ -9,12 +9,13 @@ class Gui:
 
     window = ct.CTk()
     window.wm_title("CRUD SQL")
-    window.geometry("960x582")
+    window.geometry("860x450")
+    window.resizable(False, False)
     window.grid_columnconfigure(2, weight=4)
 
     ct.set_appearance_mode("System")
 
-    sidebar_frame = ct.CTkFrame(window, width=140, corner_radius=0)
+    sidebar_frame = ct.CTkFrame(window, width=200, corner_radius=0)
     sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nsew")
     sidebar_frame.grid_rowconfigure(4, weight=1)
 
@@ -27,7 +28,6 @@ class Gui:
     entSobrenome = ct.CTkEntry(sidebar_frame, width=width_entry, placeholder_text= 'Sobrenone')
     entEmail = ct.CTkEntry(sidebar_frame, width=width_entry, placeholder_text = 'Email')
     entCpf = ct.CTkEntry(sidebar_frame, width=width_entry, placeholder_text = 'CPF')
-
 
     listClientes = Listbox(window, width=120)
     scrollClientes = ct.CTkScrollbar(window)

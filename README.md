@@ -1,5 +1,16 @@
-A small Crud made with python and having data structure + sqlite
+A small Crud made in python with data structure + sqlite
 
-The design is so simple that even a 5 year old child can make a better screen
+I used as a basis a code made in the course “Developing a Complete Python Project with Data Structures” at Bradesco
 
-I intend to improve the design and code (making it more clean code) over time
+I implemented data verification and changed the interface
+
+<div style="flex">
+New Interface
+  
+![image](https://github.com/Cristi4nSt/Crud-Estrutura-de-Dados/assets/56496903/68feade6-447d-4ed8-b43a-a2e2d003d84e)
+
+Old Interface
+![image](https://github.com/Cristi4nSt/Crud-Estrutura-de-Dados/assets/56496903/313d602a-6c8a-4acf-a580-1ec306747226)
+</div>
+
+
